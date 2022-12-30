@@ -1,3 +1,41 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="Main" type="Node"]
+[ext_resource path="res://src/systems/grid_system/TileGrid.tscn" type="PackedScene" id=1]
+
+[sub_resource type="CSharpScript" id=1]
+script/source = "using Godot;
+using System;
+
+public class Main : Node
+{
+    // Declare member variables here. Examples:
+    // private int a = 2;
+    // private string b = \"text\";
+    GlobalVars g;
+    EventSystem es;
+
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
+    {
+        _InitValues();
+    }
+
+    private void _InitValues()
+    {
+        g = GetNode<GlobalVars>(\"/root/GlobalVars\");
+        es = GetNode<EventSystem>(\"/root/EventSystem\");
+    }
+
+//  // Called every frame. 'delta' is the elapsed time since the previous frame.
+//  public override void _Process(float delta)
+//  {
+//
+//  }
+}"
+
+[node name="Main" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="TileGrid" parent="." instance=ExtResource( 1 )]
+GridX = 10
+GridY = 10

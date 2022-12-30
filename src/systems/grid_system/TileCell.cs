@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class TileCell : Node
+public class TileCell : Node2D
 {
 
     enum PlotTypes
