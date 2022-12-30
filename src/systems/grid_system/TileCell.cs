@@ -4,6 +4,13 @@ using System;
 public class TileCell : Node
 {
 
+    enum PlotTypes
+    {
+        Ground = 0,
+        Wall = 1,
+        Hole = 2,
+    }
+
     Sprite TileSprite;
     public bool IsOccupied;
 
@@ -14,6 +21,7 @@ public class TileCell : Node
 
     private void _InitValues()
     {
+        //TODO: load sprite dynamically based on cell type
         TileSprite = GetNode<Sprite>("TileSprite");
         IsOccupied = false;
     }
