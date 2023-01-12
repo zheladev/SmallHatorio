@@ -10,19 +10,18 @@ public class Main : Node2D
     EventSystem es;
 
     public Vector2 ScreenCenter;
-    private TileGrid TileGrid;
+    private TileMap TileMap;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         _InitValues();
-        TileGrid.Position = ScreenCenter;
     }
 
     private void _InitValues()
     {
         g = GetNode<GlobalVars>("/root/GlobalVars");
         es = GetNode<EventSystem>("/root/EventSystem");
-        TileGrid = GetNode<TileGrid>("TileGrid");
+        TileMap = GetNode<TileMap>("TileMap");
         Vector2 _screen = GetViewportRect().Size;
         ScreenCenter = _screen / 2;
     }
