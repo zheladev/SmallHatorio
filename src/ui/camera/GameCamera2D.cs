@@ -4,7 +4,7 @@ using System;
 public class GameCamera2D : Camera2D
 {
     [Export]
-    public Vector2 ZoomAmount = new Vector2(0.2f, 0.2f);
+    public Vector2 ZoomAmount = new Vector2(0.1f, 0.1f);
     public Boolean IsMouseDraggingActive = false;
 
     [Export]
@@ -23,6 +23,44 @@ public class GameCamera2D : Camera2D
 
     private void _HandleInput(float delta)
     {
+        _HandleCameraDrag();
+
+        _HandleCameraKeyboardMovement(delta);
+
+        _HandleCameraZoom(delta);
+    }
+
+    private void _HandleCameraKeyboardMovement(float delta)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void _HandleCameraZoom(float delta)
+    {
+        //mousewheel only trigger IsActionJustReleased.
+        if (Input.IsActionJustReleased("camera_zoom_in"))
+        {
+            Zoom -= ZoomAmount * 1.5f;
+        }
+
+        if (Input.IsActionJustReleased("camera_zoom_out"))
+        {
+            Zoom += ZoomAmount * 1.5f;
+        }
+
+        if (Input.IsActionPressed("camera_zoom_in"))
+        {
+            Zoom -= ZoomAmount;
+        }
+
+        if (Input.IsActionPressed("camera_zoom_out"))
+        {
+            Zoom += ZoomAmount;
+        }
+    }
+
+    private void _HandleCameraDrag()
+    {
         if (Input.IsActionJustPressed("camera_drag"))
         {
             IsMouseDraggingActive = true;
@@ -34,6 +72,7 @@ public class GameCamera2D : Camera2D
             Vector2 mousePos = GetViewport().GetMousePosition();
             Vector2 mov = _initialMousePosition - mousePos;
             _initialMousePosition = mousePos;
+            //TODO: take zoom level into account when calculating speed
             Position += mov * CameraDragSpeedFactor;
         }
 
@@ -43,9 +82,9 @@ public class GameCamera2D : Camera2D
         }
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
+    //  public override void _Process(float delta)
+    //  {
+    //      
+    //  }
 }
