@@ -9,6 +9,7 @@ public class GameCamera2D : Camera2D
 
     [Export]
     public float CameraDragSpeedFactor = 1.5f;
+    public float CameraKeyMovementValue = 5f;
     private Vector2 _initialMousePosition;
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -32,30 +33,45 @@ public class GameCamera2D : Camera2D
 
     private void _HandleCameraKeyboardMovement(float delta)
     {
-        throw new NotImplementedException();
+        if (Input.IsActionPressed("camera_up"))
+        {
+            Position -= new Vector2(0, CameraKeyMovementValue);
+        }
+        if (Input.IsActionPressed("camera_down"))
+        {
+            Position += new Vector2(0, CameraKeyMovementValue);
+        }
+        if (Input.IsActionPressed("camera_left"))
+        {
+            Position -= new Vector2(CameraKeyMovementValue, 0);
+        }
+        if (Input.IsActionPressed("camera_right"))
+        {
+            Position += new Vector2(CameraKeyMovementValue, 0);
+        }
     }
 
     private void _HandleCameraZoom(float delta)
     {
-        //mousewheel only trigger IsActionJustReleased.
-        if (Input.IsActionJustReleased("camera_zoom_in"))
+        //mousewheel only triggers IsActionJustReleased.
+        if (Input.IsActionJustReleased("camera_zoom_in") && Zoom.y > 0.2f)
         {
             Zoom -= ZoomAmount * 1.5f;
         }
 
-        if (Input.IsActionJustReleased("camera_zoom_out"))
+        if (Input.IsActionJustReleased("camera_zoom_out") && Zoom.y < 5f)
         {
             Zoom += ZoomAmount * 1.5f;
         }
 
-        if (Input.IsActionPressed("camera_zoom_in"))
+        if (Input.IsActionPressed("camera_zoom_in") && Zoom.y > 0.2f)
         {
-            Zoom -= ZoomAmount;
+            Zoom -= ZoomAmount * 1.5f;
         }
 
-        if (Input.IsActionPressed("camera_zoom_out"))
+        if (Input.IsActionPressed("camera_zoom_out") && Zoom.y < 5f)
         {
-            Zoom += ZoomAmount;
+            Zoom += ZoomAmount * 1.5f;
         }
     }
 
