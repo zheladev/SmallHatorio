@@ -27,19 +27,14 @@ public class Main : Node2D
 
     private void _Test()
     {
-        PackedScene oreScene = ResourceLoader.Load<PackedScene>("res://src/entities/item/Ore.tscn");
         PackedScene itemScene = ResourceLoader.Load<PackedScene>("res://src/entities/item/ItemEntity.tscn");
     
         for (int i = 0; i < 2000; i++)
         {
-            Ore ore = oreScene.Instance<Ore>();
-            GameWorld.AddChild(ore);
-            ore.Position = new Vector2(16 * (i % 8), 16 * (i % 8));
 
-            // ItemEntity leaf = itemScene.Instance<ItemEntity>();
-            // GameWorld.AddChild(leaf);
-            // leaf.Position = new Vector2(16 * (i % 8), 16 * (i % 8));
-            // GD.Print(i);
+            ItemEntity leaf = itemScene.Instance<ItemEntity>();
+            GameWorld.AddChild(leaf);
+            leaf.Position = new Vector2(-32 * 9 + 32 * (i % 19),-32 * 9 + 32 * (i % 19));
         }
     }
 
