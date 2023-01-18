@@ -32,7 +32,7 @@ public class ExampleEvent : Container
 
     public void ToggleExample()
     {
-        g.Example = !g.Example;
-        GD.Print(g.Example);
+        // g.Example = !g.Example;
+        // GD.Print(g.Example);
     }
 }

@@ -29,12 +29,13 @@ public class Main : Node2D
     {
         PackedScene itemScene = ResourceLoader.Load<PackedScene>("res://src/entities/item/ItemEntity.tscn");
     
-        for (int i = 0; i < 2000; i++)
+        for (int i = 0; i < 10; i++)
         {
 
-            ItemEntity leaf = itemScene.Instance<ItemEntity>();
-            GameWorld.AddChild(leaf);
-            leaf.Position = new Vector2(-32 * 9 + 32 * (i % 19),-32 * 9 + 32 * (i % 19));
+            ItemEntity item = itemScene.Instance<ItemEntity>();
+            item.SetItem(g.ItemDB.GetItem(i%3));
+            GameWorld.AddChild(item);
+            item.Position = new Vector2(-32 * 9 + 32 * (i % 19),-32 * 9 + 32 * (i % 19));
         }
     }
 
