@@ -1,7 +1,6 @@
 using Godot;
-using System;
 
-public class ItemEntity : Node2D
+public class ItemEntity : KinematicBody2D
 {
     public Item Item;
     public Sprite ItemSprite;
@@ -18,8 +17,8 @@ public class ItemEntity : Node2D
 
     private void _LoadTexture()
     {
-        string _textureString = Item != null ? $"item/${Item.TexturePath}" : "error.png";
-        Texture _texture = ResourceLoader.Load<Texture>($"res://img/{_textureString}");
+        string _textureString = Item != null ? Item.TexturePath : "error.png";
+        Texture _texture = ResourceLoader.Load<Texture>($"res://img/item/{_textureString}");
         ItemSprite.Texture = _texture;
     }
 
@@ -28,6 +27,8 @@ public class ItemEntity : Node2D
         ItemSprite = GetNode<Sprite>("ItemSprite");
         _LoadTexture();
     }
+
+
 
 //  // Called every frame. 'delta' is the elapsed time since the previous frame.
 //  public override void _Process(float delta)

@@ -1,9 +1,8 @@
 using Godot;
 
-public class ConveyorMechanism : Node2D
+public class ConveyorMechanism : Area2D
 {
     private Sprite Sprite;
-    private Area2D ConveyorBounds;
 
     public override void _Ready()
     {
@@ -13,7 +12,6 @@ public class ConveyorMechanism : Node2D
     private void _InitValues()
     {
         Sprite = GetNode<Sprite>("Sprite");
-        ConveyorBounds = GetNode<Area2D>("ConveyorBounds");
         Sprite.Texture = ResourceLoader.Load<Texture>("res://img/mechanism/belt_0.png");
     }
 
