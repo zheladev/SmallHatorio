@@ -18,7 +18,7 @@ public class ItemEntity : Node2D
 
     private void _LoadTexture()
     {
-        string _textureString = Item != null ? Item.TexturePath : "error.png";
+        string _textureString = Item != null ? $"item/${Item.TexturePath}" : "error.png";
         Texture _texture = ResourceLoader.Load<Texture>($"res://img/{_textureString}");
         ItemSprite.Texture = _texture;
     }
