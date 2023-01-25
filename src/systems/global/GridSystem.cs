@@ -9,7 +9,7 @@ public class GridSystem : Resource
 
     //get cell center position, get cell based on position, get 
 
-    public Vector2 GetCellCenter(Vector2 cell)
+    public Vector2 GetCellCenterPosition(Vector2 cell)
     {
         //x, y * px size + offset -> px position of the center of a given cell
         return new Vector2(cell.x * CellSize.x + CellSize.x / 2, cell.y * CellSize.y + CellSize.y / 2);
