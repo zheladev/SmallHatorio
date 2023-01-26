@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://img/ground.png" type="Texture" id=1]
 [ext_resource path="res://src/ui/camera/GameCamera2D.cs" type="Script" id=2]
 [ext_resource path="res://src/entities/mechanism/ConveyorMechanism.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/entities/item/ItemEntity.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ui/SpawnButton.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CSharpScript" id=1]
 script/source = "using Godot;
@@ -80,3 +81,7 @@ position = Vector2( 32, 96 )
 position = Vector2( -1, 0 )
 current = true
 script = ExtResource( 2 )
+
+[node name="GUICanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="GUICanvasLayer" instance=ExtResource( 5 )]

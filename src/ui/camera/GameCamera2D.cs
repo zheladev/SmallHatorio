@@ -73,7 +73,6 @@ public class GameCamera2D : Camera2D
         {
             Zoom += ZoomAmount;
         }
-        GD.Print(Zoom);
     }
 
     private void _HandleCameraDrag()
