@@ -4,18 +4,25 @@ using System;
 public class MouseItemSpawner : Node2D
 {
     GlobalVars g;
+    EventSystem es;
     public override void _Ready()
     {
         _InitValues();
     }
 
+    public override void _Process(float delta)
+    {
+        _ProcessInputs(delta);
+        Position = GetGlobalMousePosition();
+    }
+
     private void _InitValues()
     {
         g = GetNode<GlobalVars>("/root/GlobalVars");
+        es = GetNode<EventSystem>("/root/EventSystem");
     }
 
-
-    public override void _Process(float delta)
+    private void _ProcessInputs(float delta)
     {
         if (Input.IsActionJustPressed("ui_cancel"))
         {
@@ -23,6 +30,9 @@ public class MouseItemSpawner : Node2D
             QueueFree();
         }
 
-        Position = GetGlobalMousePosition();
+        if (Input.IsActionJustPressed("left_mouse_click"))
+        {
+            es.EmitEvent(EventSystem.E_NAMES.SpawnBuilding);
+        }
     }
 }
