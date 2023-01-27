@@ -32,7 +32,7 @@ public class MouseItemSpawner : Node2D
 
         if (Input.IsActionJustPressed("left_mouse_click"))
         {
-            es.EmitEvent(EventSystem.E_NAMES.SpawnBuilding);
+            es.EmitEvent(EventSystem.E_NAMES.SpawnBuilding, Position);
         }
     }
 }

@@ -17,7 +17,6 @@ public class EventSystem : Node2D
     public void EmitEvent(E_NAMES e, params object[] args)
     {
         string sig = "";
-
         switch (e)
         {
             case E_NAMES.SpawnBuilding: 
