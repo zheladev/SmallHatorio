@@ -4,7 +4,7 @@ using System;
 public class GameCamera2D : Camera2D
 {
     [Export]
-    public Vector2 ZoomAmount = new Vector2(0.1f, 0.1f);
+    public Vector2 ZoomAmount = new Vector2(0.2f, 0.2f);
     public Boolean IsMouseDraggingActive = false;
 
     [Export]
@@ -54,24 +54,24 @@ public class GameCamera2D : Camera2D
     private void _HandleCameraZoom(float delta)
     {
         //mousewheel only triggers IsActionJustReleased.
-        if (Input.IsActionJustReleased("camera_zoom_in") && Zoom.y > 0.2f)
+        if (Input.IsActionJustReleased("camera_zoom_in") && Zoom.y > 0.4f)
         {
-            Zoom -= ZoomAmount * 1.5f;
+            Zoom -= ZoomAmount;
         }
 
-        if (Input.IsActionJustReleased("camera_zoom_out") && Zoom.y < 5f)
+        if (Input.IsActionJustReleased("camera_zoom_out") && Zoom.y < 2f)
         {
-            Zoom += ZoomAmount * 1.5f;
+            Zoom += ZoomAmount;
         }
 
-        if (Input.IsActionPressed("camera_zoom_in") && Zoom.y > 0.2f)
+        if (Input.IsActionPressed("camera_zoom_in") && Zoom.y > 0.4f)
         {
-            Zoom -= ZoomAmount * 1.5f;
+            Zoom -= ZoomAmount;
         }
 
-        if (Input.IsActionPressed("camera_zoom_out") && Zoom.y < 5f)
+        if (Input.IsActionPressed("camera_zoom_out") && Zoom.y < 2f)
         {
-            Zoom += ZoomAmount * 1.5f;
+            Zoom += ZoomAmount;
         }
     }
 
