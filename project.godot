@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 
 GlobalVars="*res://src/systems/global/GlobalVars.cs"
 EventSystem="*res://src/systems/global/EventSystem.cs"
+GridSystem="*res://src/systems/global/GridSystem.cs"
 
 [display]
 

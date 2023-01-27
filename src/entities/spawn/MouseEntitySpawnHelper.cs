@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class MouseItemSpawner : Node2D
+public class MouseEntitySpawnHelper : Node2D
 {
     GlobalVars g;
     EventSystem es;

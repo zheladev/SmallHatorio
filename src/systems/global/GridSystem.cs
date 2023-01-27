@@ -1,6 +1,6 @@
 using Godot;
 
-public class GridSystem : Resource
+public class GridSystem : Node2D
 {
     [Export]
     public Vector2 GridSize = new Vector2(200, 200);
